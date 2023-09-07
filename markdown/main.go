@@ -4,11 +4,11 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"fyne.io/fyne/v2/storage"
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/storage"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -34,38 +34,6 @@ var filter = storage.NewExtensionFileFilter([]string{
 	".md",
 	".MD",
 })
-
-func (c *config) save_as(win fyne.Window) func() {
-	return func() {
-		save_dialog := dialog.NewFileSave(func(write fyne.URIWriteCloser, err error) {
-			if err != nil {
-				dialog.ShowError(err, win)
-				return
-			}
-
-			if write == nil {
-				//user cancelled
-				return
-			}
-
-			if !strings.HasSuffix(strings.ToLower(write.URI().String()), ".md") {
-				dialog.ShowInformation("Error", "Please name your file with a .md extension!", win)
-			}
-
-			//save file
-			write.Write([]byte(c.edit_widget.Text))
-			c.cur_file = write.URI()
-
-			defer write.Close()
-
-			win.SetTitle(win.Title() + "_" + write.URI().Name())
-			c.save_menu_item.Disabled = false
-		}, win)
-		save_dialog.SetFileName("Untitled.md")
-		save_dialog.SetFilter(filter)
-		save_dialog.Show()
-	}
-}
 
 func (c *config) open(win fyne.Window) func() {
 	return func() {
@@ -100,12 +68,57 @@ func (c *config) open(win fyne.Window) func() {
 	}
 }
 
+func (c *config) save(win fyne.Window) func() {
+	return func() {
+		if c.cur_file != nil {
+			write, err := storage.Writer(c.cur_file)
+			if err != nil {
+				dialog.ShowError(err, win)
+				return
+			}
+
+			write.Write([]byte(c.edit_widget.Text))
+			defer write.Close()
+		}
+	}
+}
+
+func (c *config) save_as(win fyne.Window) func() {
+	return func() {
+		save_as_dialog := dialog.NewFileSave(func(write fyne.URIWriteCloser, err error) {
+			if err != nil {
+				dialog.ShowError(err, win)
+				return
+			}
+
+			if write == nil {
+				//user cancelled
+				return
+			}
+
+			if !strings.HasSuffix(strings.ToLower(write.URI().String()), ".md") {
+				dialog.ShowInformation("Error", "Please name your file with a .md extension!", win)
+			}
+
+			//save file
+			write.Write([]byte(c.edit_widget.Text))
+			c.cur_file = write.URI()
+
+			defer write.Close()
+
+			win.SetTitle(win.Title() + "_" + write.URI().Name())
+			c.save_menu_item.Disabled = false
+		}, win)
+		save_as_dialog.SetFileName("Untitled.md")
+		save_as_dialog.SetFilter(filter)
+		save_as_dialog.Show()
+	}
+}
+
 func (c *config) create_menu_window(win fyne.Window) {
 	open_menu := fyne.NewMenuItem("Open...", c.open(win))
 
-	save_menu := fyne.NewMenuItem("Save", func() {
-
-	})
+	save_menu := fyne.NewMenuItem("Save", c.save(win))
 	c.save_menu_item = save_menu
 	c.save_menu_item.Disabled = true
 

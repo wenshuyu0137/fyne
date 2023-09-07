@@ -115,7 +115,7 @@ func (c *config) save_as(win fyne.Window) func() {
 	}
 }
 
-func (c *config) create_menu_window(win fyne.Window) {
+func (c *config) create_menu_items(win fyne.Window) {
 	open_menu := fyne.NewMenuItem("Open...", c.open(win))
 
 	save_menu := fyne.NewMenuItem("Save", c.save(win))
@@ -142,7 +142,7 @@ func main() {
 
 	//get the user interface
 	edit, preview := cfg.make_ui()
-	cfg.create_menu_window(win)
+	cfg.create_menu_items(win)
 
 	//set the content of the window
 	win.SetContent(container.NewHSplit(edit, preview))

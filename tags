@@ -73,6 +73,8 @@ Previous_close	gold/gold_price.go	/^	Previous_close float64   `json:"xauClose"`$
 Price	gold/gold_price.go	/^	Price          float64   `json:"xauPrice"`$/;"	m	struct:main.Price	typeref:typename:float64
 Price	gold/gold_price.go	/^type Price struct {$/;"	s	package:main
 Prices	gold/gold_price.go	/^	Prices []Price `json:"items"`$/;"	m	struct:main.Gold	typeref:typename:[]Price
+TestGold_GetPrices	gold/go-prices_test.go	/^func TestGold_GetPrices(t *testing.T) {$/;"	f	package:main
+TestMain	gold/setup_test.go	/^func TestMain(m *testing.M) {$/;"	f	package:main
 Test_RunAPP	markdown/main_test.go	/^func Test_RunAPP(t *testing.T){$/;"	f	package:main
 Test_make_ui	markdown/main_test.go	/^func Test_make_ui(t *testing.T) {$/;"	f	package:main
 Time	gold/gold_price.go	/^	Time           time.Time `json:"-"`$/;"	m	struct:main.Price	typeref:typename:time.Time
@@ -84,17 +86,24 @@ cfg	markdown/main.go	/^var cfg config$/;"	v	package:main	typeref:struct:config
 clean	markdown/makefile	/^clean:$/;"	t
 config	markdown/main.go	/^type config struct {$/;"	s	package:main
 create_menu_items	markdown/main.go	/^func (c *config) create_menu_items(win fyne.Window) {$/;"	f	struct:main.config
+ctor_serial	T61Host/serial.go	/^func ctor_serial(cfg *serial_config) serial.Port {$/;"	f	package:main	typeref:typename:serial.Port
 cur_file	markdown/main.go	/^	cur_file       fyne.URI$/;"	m	struct:main.config	typeref:typename:fyne.URI
 currency	gold/gold_price.go	/^var currency = "USD"$/;"	v	package:main
 edit_widget	markdown/main.go	/^	edit_widget    *widget.Entry$/;"	m	struct:main.config	typeref:typename:*widget.Entry
 err_log	gold/main.go	/^	err_log     *log.Logger$/;"	m	struct:main.app_config	typeref:typename:*log.Logger
 filter	markdown/main.go	/^var filter = storage.NewExtensionFileFilter([]string{$/;"	v	package:main
 fyne	README.md	/^# fyne/;"	c
+get_post_names	T61Host/serial.go	/^func (s *serial_config) get_post_names() []string {$/;"	f	struct:main.serial_config	typeref:typename:[]string
 get_prices	gold/gold_price.go	/^func (g *Gold) get_prices() (*Price, error) {$/;"	f	struct:main.Gold	typeref:typename:(*Price, error)
 info_log	gold/main.go	/^	info_log    *log.Logger$/;"	m	struct:main.app_config	typeref:typename:*log.Logger
+main	T61Host/main.go	/^func main() {$/;"	f	package:main
+main	T61Host/main.go	/^package main$/;"	p
+main	T61Host/serial.go	/^package main$/;"	p
+main	gold/go-prices_test.go	/^package main$/;"	p
 main	gold/gold_price.go	/^package main$/;"	p
 main	gold/main.go	/^func main() {$/;"	f	package:main
 main	gold/main.go	/^package main$/;"	p
+main	gold/setup_test.go	/^package main$/;"	p
 main	gold/ui.go	/^package main$/;"	p
 main	markdown/main.go	/^func main() {$/;"	f	package:main
 main	markdown/main.go	/^package main$/;"	p
@@ -102,11 +111,19 @@ main	markdown/main_test.go	/^package main$/;"	p
 main_window	gold/main.go	/^	main_window fyne.Window$/;"	m	struct:main.app_config	typeref:typename:fyne.Window
 make_ui	gold/ui.go	/^func (a *app_config) make_ui() {$/;"	f	unknown:main.app_config
 make_ui	markdown/main.go	/^func (c *config) make_ui() (edit *widget.Entry, preview *widget.RichText) {$/;"	f	struct:main.config	typeref:typename:(edit *widget.Entry, preview *widget.RichText)
+mode	T61Host/serial.go	/^	mode      serial.Mode$/;"	m	struct:main.serial_config	typeref:typename:serial.Mode
 my_app	gold/main.go	/^var my_app app_config$/;"	v	package:main	typeref:struct:app_config
+new_config	T61Host/serial.go	/^func new_config() serial_config {$/;"	f	package:main	typeref:typename:serial_config
+new_port	T61Host/serial.go	/^func new_port(cfg *serial_config) serial.Port {$/;"	f	package:main	typeref:typename:serial.Port
 open	markdown/main.go	/^func (c *config) open(win fyne.Window) func() {$/;"	f	struct:main.config	typeref:typename:func()
+port_name	T61Host/serial.go	/^	port_name string$/;"	m	struct:main.serial_config	typeref:typename:string
 previer_widget	markdown/main.go	/^	previer_widget *widget.RichText$/;"	m	struct:main.config	typeref:typename:*widget.RichText
 run	markdown/makefile	/^run:$/;"	t
 save	markdown/main.go	/^func (c *config) save(win fyne.Window) func() {$/;"	f	struct:main.config	typeref:typename:func()
 save_as	markdown/main.go	/^func (c *config) save_as(win fyne.Window) func() {$/;"	f	struct:main.config	typeref:typename:func()
 save_menu_item	markdown/main.go	/^	save_menu_item *fyne.MenuItem$/;"	m	struct:main.config	typeref:typename:*fyne.MenuItem
+serial_config	T61Host/serial.go	/^type serial_config struct {$/;"	s	package:main
+set_baudrate	T61Host/serial.go	/^func (s *serial_config) set_baudrate(value int) {$/;"	f	struct:main.serial_config
+set_port	T61Host/serial.go	/^func (s *serial_config) set_port(port string) {$/;"	f	struct:main.serial_config
 test	markdown/makefile	/^test:$/;"	t
+testApp	gold/setup_test.go	/^var testApp app_config$/;"	v	package:main	typeref:typename:app_config

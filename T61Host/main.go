@@ -10,7 +10,7 @@ func main() {
 	port_names := m_cfg.get_post_names()
 	fmt.Println(port_names)
 	m_cfg.set_baudrate(115200)
-	m_cfg.set_port(port_names[0])
+	m_cfg.set_port("COM8")
 
 	port := new_port(&m_cfg)
 

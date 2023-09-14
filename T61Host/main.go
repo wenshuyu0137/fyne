@@ -8,7 +8,7 @@ func main() {
 	var m_cfg = new_config()
 
 	port_names := m_cfg.get_post_names()
-
+	fmt.Println(port_names)
 	m_cfg.set_baudrate(115200)
 	m_cfg.set_port(port_names[0])
 

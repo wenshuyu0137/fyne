@@ -42,6 +42,5 @@ var (
 
 func main() {
 	create_menu()
-	save_to_init("串口信息", "波特率", "115200")
 	m_app_window.app_window.ShowAndRun()
 }

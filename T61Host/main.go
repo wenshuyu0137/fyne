@@ -1,21 +1,47 @@
 package main
 
 import (
-	"fmt"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"os"
+	"path/filepath"
+)
+
+type main_window struct {
+	app_window fyne.Window //应用窗口
+}
+
+// 窗口实例化
+func new_window() fyne.Window {
+	m_app := app.New()
+
+	path := os.Args[0]
+	title := filepath.Base(path)
+	title_ext := filepath.Ext(path)
+	title = title[:len(title)-len(title_ext)]
+
+	m_window := m_app.NewWindow(title)
+
+	m_window.Resize(fyne.NewSize(1000, 600))
+	m_window.CenterOnScreen()
+	return m_window
+}
+
+// 全局变量
+var (
+	m_app_window = main_window{
+		app_window: new_window(),
+	}
+
+	m_menu = all_menu{
+		all_menu: new_main_menu(),
+	}
+
+	serial_cfg = new_config()
 )
 
 func main() {
-	var m_cfg = new_config()
-
-	port_names := m_cfg.get_post_names()
-	fmt.Println(port_names)
-	m_cfg.set_baudrate(115200)
-	m_cfg.set_port("COM8")
-
-	port := new_port(&m_cfg)
-
-	send_data := []byte("hellodsawdwasfsafsd world")
-
-	rcv_data := serial_send_and_rcv(port, send_data)
-	fmt.Printf("%s\n", string(rcv_data))
+	create_menu()
+	save_to_init("串口信息", "波特率", "115200")
+	m_app_window.app_window.ShowAndRun()
 }

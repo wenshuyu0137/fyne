@@ -12,6 +12,16 @@
 !_TAG_FIELD_DESCRIPTION!Go	packageName	/the name for referring the package/
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_KIND_DESCRIPTION!C	d,macro	/macro definitions/
+!_TAG_KIND_DESCRIPTION!C	e,enumerator	/enumerators (values inside an enumeration)/
+!_TAG_KIND_DESCRIPTION!C	f,function	/function definitions/
+!_TAG_KIND_DESCRIPTION!C	g,enum	/enumeration names/
+!_TAG_KIND_DESCRIPTION!C	h,header	/included header files/
+!_TAG_KIND_DESCRIPTION!C	m,member	/struct, and union members/
+!_TAG_KIND_DESCRIPTION!C	s,struct	/structure names/
+!_TAG_KIND_DESCRIPTION!C	t,typedef	/typedefs/
+!_TAG_KIND_DESCRIPTION!C	u,union	/union names/
+!_TAG_KIND_DESCRIPTION!C	v,variable	/variable definitions/
 !_TAG_KIND_DESCRIPTION!DTD	E,entity	/entities/
 !_TAG_KIND_DESCRIPTION!DTD	a,attribute	/attributes/
 !_TAG_KIND_DESCRIPTION!DTD	e,element	/elements/
@@ -45,6 +55,7 @@
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_OUTPUT_VERSION	0.0	/current.age/
+!_TAG_PARSER_VERSION!C	0.0	/current.age/
 !_TAG_PARSER_VERSION!DTD	0.0	/current.age/
 !_TAG_PARSER_VERSION!Go	0.0	/current.age/
 !_TAG_PARSER_VERSION!Make	0.0	/current.age/
@@ -55,6 +66,9 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	6.0.0	/p6.0.20230827.0/
+!_TAG_ROLE_DESCRIPTION!C!header	local	/local header/
+!_TAG_ROLE_DESCRIPTION!C!header	system	/system header/
+!_TAG_ROLE_DESCRIPTION!C!macro	undef	/undefined/
 !_TAG_ROLE_DESCRIPTION!DTD!element	attOwner	/attributes owner/
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	condition	/conditions/
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	elementName	/element names/
@@ -86,7 +100,6 @@ cfg	markdown/main.go	/^var cfg config$/;"	v	package:main	typeref:struct:config
 clean	markdown/makefile	/^clean:$/;"	t
 config	markdown/main.go	/^type config struct {$/;"	s	package:main
 create_menu_items	markdown/main.go	/^func (c *config) create_menu_items(win fyne.Window) {$/;"	f	struct:main.config
-ctor_serial	T61Host/serial.go	/^func ctor_serial(cfg *serial_config) serial.Port {$/;"	f	package:main	typeref:typename:serial.Port
 cur_file	markdown/main.go	/^	cur_file       fyne.URI$/;"	m	struct:main.config	typeref:typename:fyne.URI
 currency	gold/gold_price.go	/^var currency = "USD"$/;"	v	package:main
 edit_widget	markdown/main.go	/^	edit_widget    *widget.Entry$/;"	m	struct:main.config	typeref:typename:*widget.Entry
@@ -96,6 +109,7 @@ fyne	README.md	/^# fyne/;"	c
 get_post_names	T61Host/serial.go	/^func (s *serial_config) get_post_names() []string {$/;"	f	struct:main.serial_config	typeref:typename:[]string
 get_prices	gold/gold_price.go	/^func (g *Gold) get_prices() (*Price, error) {$/;"	f	struct:main.Gold	typeref:typename:(*Price, error)
 info_log	gold/main.go	/^	info_log    *log.Logger$/;"	m	struct:main.app_config	typeref:typename:*log.Logger
+main	T61Host/1.c	/^int main()$/;"	f	typeref:typename:int
 main	T61Host/main.go	/^func main() {$/;"	f	package:main
 main	T61Host/main.go	/^package main$/;"	p
 main	T61Host/serial.go	/^package main$/;"	p
@@ -123,6 +137,7 @@ save	markdown/main.go	/^func (c *config) save(win fyne.Window) func() {$/;"	f	st
 save_as	markdown/main.go	/^func (c *config) save_as(win fyne.Window) func() {$/;"	f	struct:main.config	typeref:typename:func()
 save_menu_item	markdown/main.go	/^	save_menu_item *fyne.MenuItem$/;"	m	struct:main.config	typeref:typename:*fyne.MenuItem
 serial_config	T61Host/serial.go	/^type serial_config struct {$/;"	s	package:main
+serial_send_and_rcv	T61Host/serial.go	/^func serial_send_and_rcv(port serial.Port,data []byte) []byte{$/;"	f	package:main	typeref:typename:[]byte
 set_baudrate	T61Host/serial.go	/^func (s *serial_config) set_baudrate(value int) {$/;"	f	struct:main.serial_config
 set_port	T61Host/serial.go	/^func (s *serial_config) set_port(port string) {$/;"	f	struct:main.serial_config
 test	markdown/makefile	/^test:$/;"	t

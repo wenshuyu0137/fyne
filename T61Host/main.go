@@ -14,22 +14,8 @@ func main() {
 
 	port := new_port(&m_cfg)
 
-	send_data := []byte("hello world")
-	rcv_data := serial_send_and_rcv(port,send_data)
-	fmt.Println(rcv_data)
+	send_data := []byte("hellodsawdwasfsafsd world")
+
+	rcv_data := serial_send_and_rcv(port, send_data)
+	fmt.Printf("%s\n", string(rcv_data))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

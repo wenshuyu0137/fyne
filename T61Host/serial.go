@@ -53,36 +53,27 @@ func new_port(cfg *serial_config) serial.Port {
 	return port
 }
 
-func serial_send_and_rcv(port serial.Port,data []byte) []byte{
-	length,err := port.Write(data)
-	if err != nil && length != len(data){
+func serial_send_and_rcv(port serial.Port, data []byte) []byte {
+	length, err := port.Write(data)
+	if err != nil && length != len(data) {
 		return []byte{0}
 	}
 
 	err = port.Drain()
-	if err != nil{
+	if err != nil {
 		return []byte{0}
 	}
-	rcv_buf := make([]byte,256)
+	rcv_buf := make([]byte, 256)
+	rcv_data := make([]byte, 0)
 	for {
-		n,err := port.Read(rcv_buf)
-		if err != nil{
+		n, err := port.Read(rcv_buf)
+		if err != nil {
 			return []byte{0}
 		}
-		if n == 0{
+		if n == 0 {
 			break
 		}
+		rcv_data = append(rcv_data, rcv_buf[:n]...)
 	}
-	return rcv_buf
+	return rcv_data
 }
-
-
-
-
-
-
-
-
-
-
-
